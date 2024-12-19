@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import './Signup.css';
+import Navbar from './components/Navbar';
 
 function Signup() {
   return (
     <>
       <div className="container-fluid">
+        <Navbar/>
         <div className="container" style={{ minHeight: '100vh' }}>
           <div className="row justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
             {/* Signup Section */}
