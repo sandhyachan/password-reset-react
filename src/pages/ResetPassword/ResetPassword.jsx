@@ -26,7 +26,7 @@ export default function ResetPassword() {
     const payload = { token, newPassword, confirmPassword };
 
     try {
-      const response = await fetch('http://localhost:3000/resetpassword', {
+      const response = await fetch('https://password-reset-server-qaxv.onrender.com/resetpassword', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

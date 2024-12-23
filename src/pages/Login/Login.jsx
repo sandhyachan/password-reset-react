@@ -30,7 +30,7 @@ function Login() {
     setErrorMessage(""); // Clear previous error message
 
     try {
-      const response = await fetch("http://localhost:3000/login", {
+      const response = await fetch("https://password-reset-server-qaxv.onrender.com/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

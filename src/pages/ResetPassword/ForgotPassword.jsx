@@ -17,7 +17,7 @@ export default function ForgotPassword() {
     const payload = { email };
 
     try {
-      const response = await fetch('http://localhost:3000/forgotpassword', {
+      const response = await fetch('https://password-reset-server-qaxv.onrender.com/forgotpassword', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
