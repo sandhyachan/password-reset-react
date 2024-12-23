@@ -67,7 +67,7 @@ export default function ForgotPassword() {
 
           <div className="mt-3 text-center">
             <p>Remembered your password? <Link to="/" className="text-primary">Login here</Link></p>
-            <p>Don&#39t have an account? <Link to="/signup" className="text-primary">Sign Up here</Link></p>
+            <p>Don&#39;t have an account? <Link to="/signup" className="text-primary">Sign Up here</Link></p>
           </div>
         </div>
       </div>

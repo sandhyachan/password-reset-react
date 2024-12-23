@@ -87,19 +87,19 @@ function Home () {
           <div className="row">
             <div className="col-md-4">
               <blockquote>
-                &#34 The best vacation we’ve ever had! The villa was incredible, and the staff was so friendly.&#34 
+                &#34; The best vacation we’ve ever had! The villa was incredible, and the staff was so friendly.&#34; 
                 <footer>- Jane Doe</footer>
               </blockquote>
             </div>
             <div className="col-md-4">
               <blockquote>
-              &#34 An unforgettable experience! Highly recommend the spa and beachfront dining.&#34 
+              &#34; An unforgettable experience! Highly recommend the spa and beachfront dining.&#34; 
                 <footer>- John Smith</footer>
               </blockquote>
             </div>
             <div className="col-md-4">
               <blockquote>
-                &#34 Perfect place for a relaxing getaway. We’ll definitely be coming back.&#34 
+                &#34; Perfect place for a relaxing getaway. We’ll definitely be coming back.&#34; 
                 <footer>- Sarah Lee</footer>
               </blockquote>
             </div>
