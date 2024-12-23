@@ -1,20 +1,21 @@
-import { useState } from 'react';
-import './ResetPassword.css'; // Add custom CSS for styling
-import { Link } from 'react-router-dom';
+import { useState } from 'react'
+import './ResetPassword.css' // Add custom CSS for styling
+import { Link } from 'react-router-dom'
 
 export default function ForgotPassword() {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [loading, setLoading] = useState(false)
 
+  //Handles password reset request
   async function handleForgotPassword(e) {
-    e.preventDefault();
-    setLoading(true);
-    setMessage('');
-    setErrorMessage('');
+    e.preventDefault()
+    setLoading(true)
+    setMessage('')
+    setErrorMessage('')
 
-    const payload = { email };
+    const payload = { email }
 
     try {
       const response = await fetch('https://password-reset-server-qaxv.onrender.com/forgotpassword', {
@@ -23,20 +24,20 @@ export default function ForgotPassword() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(payload),
-      });
+      })
 
-      const data = await response.json();
+      const data = await response.json()
 
       if (response.ok) {
-        setMessage(data.message); // Success message
+        setMessage(data.message) // Success message
       } else {
-        setErrorMessage(data.message); // Show error message
+        setErrorMessage(data.message) // Show error message
       }
     } catch (error) {
-      console.error(error);
-      setErrorMessage('An error occurred. Please try again later.');
+      console.error(error)
+      setErrorMessage('An error occurred. Please try again later.')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   }
 
@@ -66,10 +67,10 @@ export default function ForgotPassword() {
 
           <div className="mt-3 text-center">
             <p>Remembered your password? <Link to="/" className="text-primary">Login here</Link></p>
-            <p>Don&#39;t have an account? <Link to="/signup" className="text-primary">Sign Up here</Link></p>
+            <p>Don&#39t have an account? <Link to="/signup" className="text-primary">Sign Up here</Link></p>
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }

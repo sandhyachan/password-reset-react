@@ -1,46 +1,46 @@
-import { Link } from 'react-router-dom';
-import './Signup.css';
-import Navbar from '../../components/Navbar';
-import { useNavigate } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom'; 
+import './Signup.css'; 
+import Navbar from '../../components/Navbar'; 
+import { useNavigate } from 'react-router-dom'; 
+import { useRef, useState } from 'react'; 
 
 function Signup() {
-  const emailRef = useRef(null);
-  const passRef = useRef(null);
-  const confirmPassRef = useRef(null);
-  const nameRef = useRef(null);
-  const phoneNumberRef = useRef(null); // Reference for phone number
-  const navigate = useNavigate();
+  const emailRef = useRef(null) 
+  const passRef = useRef(null) 
+  const confirmPassRef = useRef(null) 
+  const nameRef = useRef(null) 
+  const phoneNumberRef = useRef(null)  // Reference for phone number
+  const navigate = useNavigate() 
 
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false) 
+  const [errorMessage, setErrorMessage] = useState("") 
 
   // This function will handle form submission
   async function handleSignUp(e) {
-    e.preventDefault();  // Prevent default form submission
+    e.preventDefault()   // Prevent default form submission
 
-    const fullName = nameRef.current.value;
-    const email = emailRef.current.value;
-    const phoneNumber = phoneNumberRef.current.value;  // Get phone number
-    const password = passRef.current.value;
-    const confirmPassword = confirmPassRef.current.value;
+    const fullName = nameRef.current.value 
+    const email = emailRef.current.value 
+    const phoneNumber = phoneNumberRef.current.value   // Get phone number
+    const password = passRef.current.value 
+    const confirmPassword = confirmPassRef.current.value 
 
     // Validate all required fields
     if (!fullName || !email || !password || !confirmPassword || !phoneNumber) {
-      setErrorMessage("All fields are required.");
-      return;
+      setErrorMessage("All fields are required.") 
+      return 
     }
 
     // Validate password confirmation
     if (password !== confirmPassword) {
-      setErrorMessage("Passwords do not match.");
-      return;
+      setErrorMessage("Passwords do not match.") 
+      return 
     }
 
     // Check password length (optional, but generally a good practice)
     if (password.length < 6) {
-      setErrorMessage("Password must be at least 6 characters.");
-      return;
+      setErrorMessage("Password must be at least 6 characters.") 
+      return 
     }
 
     // Prepare the payload to send to the server
@@ -49,10 +49,10 @@ function Signup() {
       email,
       phoneNumber,  // Include phone number in the payload
       password,
-    };
+    } 
 
-    setLoading(true);
-    setErrorMessage(""); // Clear any previous error message
+    setLoading(true) 
+    setErrorMessage("")  // Clear any previous error message
 
     try {
       const response = await fetch("https://password-reset-server-qaxv.onrender.com/signup", {
@@ -61,20 +61,20 @@ function Signup() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
-      });
+      }) 
 
       if (response.ok) {
         // Navigate to login or home page after successful signup
-        setTimeout(() => navigate('/'), 2000);
+        setTimeout(() => navigate('/'), 2000) 
       } else {
-        const errorData = await response.json();
-        setErrorMessage(errorData.message || "Signup failed. Please try again.");
+        const errorData = await response.json() 
+        setErrorMessage(errorData.message || "Signup failed. Please try again.") 
       }
     } catch (err) {
-      console.error(err);
-      setErrorMessage("An error occurred. Please try again later.");
+      console.error(err) 
+      setErrorMessage("An error occurred. Please try again later.") 
     } finally {
-      setLoading(false);
+      setLoading(false) 
     }
   }
 
@@ -177,7 +177,7 @@ function Signup() {
         </div>
       </div>
     </>
-  );
+  ) 
 }
 
-export default Signup;
+export default Signup 

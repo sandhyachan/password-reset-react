@@ -1,29 +1,29 @@
-import { useState } from 'react';
+import { useState } from 'react'; 
 import './ResetPassword.css'; // Add custom CSS for styling
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function ResetPassword() {
-  const navigate = useNavigate();
-  const [token, setToken] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [message, setMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
+  const [token, setToken] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [message, setMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [loading, setLoading] = useState(false)
 
   async function handleResetPassword(e) {
-    e.preventDefault();
-    setLoading(true);
-    setMessage('');
-    setErrorMessage('');
+    e.preventDefault()
+    setLoading(true)
+    setMessage('')
+    setErrorMessage('')
 
     if (newPassword !== confirmPassword) {
-      setErrorMessage("Passwords don't match!");
-      setLoading(false);
-      return;
+      setErrorMessage("Passwords don't match!")
+      setLoading(false)
+      return
     }
 
-    const payload = { token, newPassword, confirmPassword };
+    const payload = { token, newPassword, confirmPassword }
 
     try {
       const response = await fetch('https://password-reset-server-qaxv.onrender.com/resetpassword', {
@@ -32,21 +32,21 @@ export default function ResetPassword() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(payload),
-      });
+      })
 
-      const data = await response.json();
+      const data = await response.json()
 
       if (response.ok) {
-        setMessage(data.message); // Success message
-        setTimeout(() => navigate('/'), 2000); // Redirect to login after 2 seconds
+        setMessage(data.message) // Success message
+        setTimeout(() => navigate('/'), 2000) // Redirect to login after 2 seconds
       } else {
-        setErrorMessage(data.message); // Show error message
+        setErrorMessage(data.message) // Show error message
       }
     } catch (error) {
-      console.error(error);
-      setErrorMessage('An error occurred. Please try again later.');
+      console.error(error)
+      setErrorMessage('An error occurred. Please try again later.')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   }
 
@@ -100,5 +100,5 @@ export default function ResetPassword() {
         </div>
       </div>
     </div>
-  );
+  )
 }

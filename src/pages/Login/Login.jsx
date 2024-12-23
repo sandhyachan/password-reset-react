@@ -1,33 +1,33 @@
-import { Link } from 'react-router-dom';
-import './Login.css';
-import { useRef, useState } from 'react';
-import Navbar from '../../components/Navbar';
-import Carousel from '../../components/Carousel';
+import { Link } from 'react-router-dom'
+import './Login.css'
+import { useRef, useState } from 'react'
+import Navbar from '../../components/Navbar'
+import Carousel from '../../components/Carousel'
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
-  const emailRef = useRef(null);
-  const passRef = useRef(null);
-  const navigate = useNavigate();
+  const emailRef = useRef(null)
+  const passRef = useRef(null)
+  const navigate = useNavigate()
   
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
 
   async function handleLogin(e) {
-    e.preventDefault();
+    e.preventDefault()
     
     const payload = {
       email: emailRef.current.value,
       password: passRef.current.value
-    };
-
-    if (!payload.email || !payload.password) {
-      setErrorMessage("Please enter both email and password.");
-      return;
     }
 
-    setLoading(true);
-    setErrorMessage(""); // Clear previous error message
+    if (!payload.email || !payload.password) {
+      setErrorMessage("Please enter both email and password.")
+      return
+    }
+
+    setLoading(true)
+    setErrorMessage("") // Clear previous error message
 
     try {
       const response = await fetch("https://password-reset-server-qaxv.onrender.com/login", {
@@ -36,22 +36,22 @@ function Login() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(payload)
-      });
+      })
 
       if (response.ok) {
-        // Assuming the server returns a success response
+        // On successful response, return to home
         setTimeout(() => {
-          navigate('/home');
-        }, 2000);
+          navigate('/home')
+        }, 2000)
       } else {
         // Handle incorrect login
-        setErrorMessage("Invalid credentials. Please try again.");
+        setErrorMessage("Invalid credentials. Please try again.")
       }
     } catch (err) {
-      console.error(err);
-      setErrorMessage("An error occurred. Please try again later.");
+      console.error(err)
+      setErrorMessage("An error occurred. Please try again later.")
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   }
 
@@ -108,7 +108,7 @@ function Login() {
                 </button>
 
                 <div className="form-group text-center mt-3">
-                  <p className="text-muted">Don&#39;t have an account? <Link to="/signup" className="btn btn-link">Sign Up</Link></p>
+                  <p className="text-muted">Don&#39t have an account? <Link to="/signup" className="btn btn-link">Sign Up</Link></p>
                 </div>
               </form>
             </div>
@@ -116,7 +116,7 @@ function Login() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Login;
+export default Login
