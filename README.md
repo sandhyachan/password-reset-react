@@ -66,7 +66,7 @@ The application uses **React Router** to handle navigation. Below are the availa
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/sandhyachan/react-redux-cart.git
+    git clone https://github.com/sandhyachan/password-reset-react.git
     ```
 
 2. **Install dependencies**:
